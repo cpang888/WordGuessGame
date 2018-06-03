@@ -1,16 +1,19 @@
 
-    // var words = ['usa', 'canada', 'china'];
+
+    // this is an array with objects.
+    // each object contains name, image and sound
     var words = [
       {name: "usa", image: "usa.PNG", sound: "usa.mp3"},
       {name: "canada", image: "canada.PNG", sound: "canada.mp3"},
       {name: "china", image: "china.PNG", sound: "china.mp3"}
     ];
 
+    // this is game object
     var game = {
       guessed: [],
       left: 10,
       reset: function () {
-        // reset the selector 'right', 'left', 'remain, and 'wrong'
+        // reset all selectors 'right', 'left', 'remain, and 'wrong'
         this.$right.innerHTML = '';
         this.left = 10;
         this.$remain.innerHTML = this.left;
@@ -55,6 +58,12 @@
           // compare it with user input 'letter'
           if (this.word[i] == letter) {
             // if equal, assign the letter to the new local variable word
+            // split() returns an array on which join() can be applied
+            /* Example of split() and join()
+              var str = 'asdfghjkl';
+              var strReverse = str.split('').reverse().join(''); // 'lkjhgfdsa'
+              // split() returns an array on which reverse() and join() can be applied
+            */
             var word = this.$right.innerHTML.split('');
             word[i] = letter;
             this.$right.innerHTML = word.join('');
@@ -86,30 +95,44 @@
         }
       },
       wrong: function(letter) {
+        // user guessed the letter wrong. 
+        // add the user guessed letter to the guessed array
         this.guessed.push(letter);
         this.$wrong.innerHTML += ' ' + letter;
 
         // set style to a DOM object
+        // make the guessed array all upper case
         this.$wrong.style.textTransform = "capitalize";
 
+        // Remaining guess need to reduce one
         this.left--;
+        // show remaining guessed count on brower
         this.$remain.innerHTML = this.left;
         if (this.left < 1) {
+          // remaining guessed is 0. User lose!
           alert('You lose! The answer is '+ this.word);
+          // game is completed. Set the complete to true
           this.complete = true;
 
+          // ask player if he/she would like to play again
           var response = confirm("Would you like to try again?");
           if (response == true) {
+            // if player would like to play again, call the reset function
+            // which reset all selector
             game.reset();
+            // call start function to start a new game
             game.start();
           }
         } 
       }
     };
     $(document).ready(function() {
+      // start the game only if brower is loaded all properties completely
       game.start();
       document.onkeyup = function(event) {
+        // player pressed a key. Assign the key to variable letter
         var letter = String.fromCharCode(event.keyCode).toLowerCase();
+        // pass the letter to the guess function to determine win/lose
         game.guess(letter);
       };
     });
