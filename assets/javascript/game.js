@@ -13,6 +13,13 @@
     var game = {
       guessed: [],
       left: 10,
+      reset: function () {
+        
+        this.$right.innerHTML = '';
+        this.left = 10;
+        this.$remain.innerHTML = this.left;
+        this.$wrong.innerHTML = '';
+      },
       start: function() {
         this.complete = false;
         index = Math.floor(Math.random() * words.length);
@@ -42,8 +49,6 @@
           }
         }
         if (this.$right.innerHTML.indexOf('_') < 0) {
-          // alert('you win!');
-          this.complete = true;
 
           var countries = $("#countries");
           var imageCountry = $("<img>");
@@ -62,6 +67,9 @@
           var audioElement = document.createElement("audio");
           audioElement.setAttribute("src", "assets/sounds/" + countryAnthem);
           audioElement.play();
+
+          this.complete = true;
+
         }
       },
       wrong: function(letter) {
@@ -77,13 +85,12 @@
           alert('You lose! The answer is '+ this.word);
           this.complete = true;
 
-          // var response = confirm("Would you like to try again?");
-          // if (response == true) {
-          //   game.start();
-          // } else {
-          //   alert('Thank you for playing');
-          // }
-        }
+          var response = confirm("Would you like to try again?");
+          if (response == true) {
+            game.reset();
+            game.start();
+          }
+        } 
       }
     };
     $(document).ready(function() {
