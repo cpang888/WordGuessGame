@@ -74,8 +74,15 @@
         this.left--;
         this.$remain.innerHTML = this.left;
         if (this.left < 1) {
-          alert('you lose! '+ this.word);
+          alert('You lose! The answer is '+ this.word);
           this.complete = true;
+
+          // var response = confirm("Would you like to try again?");
+          // if (response == true) {
+          //   game.start();
+          // } else {
+          //   alert('Thank you for playing');
+          // }
         }
       }
     };

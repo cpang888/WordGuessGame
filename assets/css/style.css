@@ -4,6 +4,18 @@
      height: 800px;
  }
 
+ .bg {
+    /* The image used */
+    background-image: url("../images/olympics.PNG");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
  /* Keep it simple - improvement would be to not display characters */
  .letter {
     display: inline-block;
