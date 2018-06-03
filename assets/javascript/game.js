@@ -12,7 +12,7 @@
 
     var game = {
       guessed: [],
-      left: 12,
+      left: 10,
       start: function() {
         this.complete = false;
         index = Math.floor(Math.random() * words.length);
@@ -68,7 +68,8 @@
         this.guessed.push(letter);
         this.$wrong.innerHTML += ' ' + letter;
 
-        // $wrong.addClass("bigLetter");
+        // set style to a DOM object
+        this.$wrong.style.textTransform = "capitalize";
 
         this.left--;
         this.$remain.innerHTML = this.left;
