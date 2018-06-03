@@ -48,18 +48,14 @@
           var countries = $("#countries");
           var imageCountry = $("<img>");
 
-          // First each crystal will be given the class ".crystal-image".
+          // First each country will be given the class ".country-image".
           // This will allow the CSS to take effect.
           imageCountry.addClass("country-image");
 
-          // Each imageCrystal will be given a src link to the crystal image
+          // Each imageCountry will be given a src link to the country image
           imageCountry.attr("src", "assets/images/" + image);
 
-          // Each imageCrystal will be given a data attribute called data-crystalValue.
-          // This data attribute will be set equal to the array value.
-          // imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-
-          // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+          // Lastly, each country image (with all it classes and attributes) will get added to the page.
           countries.append(imageCountry);
 
           // play music
@@ -70,9 +66,10 @@
       },
       wrong: function(letter) {
         this.guessed.push(letter);
-        var temp = letter;
-        // this.$wrong.innerHTML += ' ' + temp.toUpperCase;
         this.$wrong.innerHTML += ' ' + letter;
+
+        // $wrong.addClass("bigLetter");
+
         this.left--;
         this.$remain.innerHTML = this.left;
         if (this.left < 1) {
