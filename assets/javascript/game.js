@@ -1,9 +1,9 @@
 
     // var words = ['usa', 'canada', 'china'];
     var words = [
-      {name: "usa", image: "usa.PNG", sound: "usa.MP3"},
-      {name: "canada", image: "canada.PNG", sound: "canada.MP3"},
-      {name: "china", image: "china.PNG", sound: "china.MP3"}
+      {name: "usa", image: "usa.PNG", sound: "usa.mp3"},
+      {name: "canada", image: "canada.PNG", sound: "canada.mp3"},
+      {name: "china", image: "china.PNG", sound: "china.mp3"}
     ];
     
     var image;
